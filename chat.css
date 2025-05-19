@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --windowHeight: 100vh;
+  --windowWidth: 100vw;
+  --windowScrollY: 0;
+  --inputHeight: 30px;
+  --inputContainerHeight: 50px;
+  --headerHeight: 50px; /*not dynamically set*/
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif ;
+  -webkit-overflow-scrolling: touch;
+}
+html {
+  height: var(--windowHeight);
+  width: var(--windowWidth);
+  overflow: hidden;
+}
+
+body {
+  height: var(--windowHeight);
+  width: var(--windowWidth);
+  overflow-y: hidden;
+  border-top: 1px solid rgb(54, 54, 54);
+  margin: 0;
+  position: fixed;
+  top: var(--windowScrollY);
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* header section style */
+.head-container {
+  background-color: rgb(54, 54, 54);
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+}
+
+#head {
+  height: var(--headerHeight);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 0 20px;
+  width: var(--windowWidth);
+  max-width: 500px;
+}
+
+.contact-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.contact-details img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: white;
+}
+.icon {
+  font-size: 25px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+/* chatbody style section */
+.chat-container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch
+}
+
+.chatbody {
+  height: calc(var(--windowHeight) - var(--inputContainerHeight) - var(--headerHeight));
+  width: var(--windowWidth);
+  transition: all 0.3s ease;
+  max-width: 500px;
+  background: url(''), rgb(139, 139, 180);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 10px 10px 5px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+/* styles for each chat items */
+.chatbody .chat-item {
+  width: fit-content;
+  max-width: 65%;
+  max-height: 500px;
+  min-width: 100px;
+  overflow-y: hidden;
+  padding: 10px;
+  padding-bottom: 15px;
+  border-radius: 10px;
+  overflow-wrap: break-word;
+  flex-shrink: 0;
+  color: white;
+  font-size: 15px;
+  background-color: rgb(169, 68, 169);
+  position: relative;
+}
+
+.chatbody .chat-item span {
+  font-size: 10px;
+  position: absolute;
+  right: 8px;
+  bottom: 2px;
+}
+.chatbody .sender {
+  align-self: flex-end;
+}
+
+.chatbody .receiver {
+  align-self: flex-start;
+  background-color: palevioletred;
+}
+
+
+/* styles for the input section */
+.sendmsg-container {
+  background-color: rgb(54, 54, 54);
+  display: flex;
+  justify-content: center;
+}
+
+.sendmsg-container .sendmsg {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  overflow: hidden;
+  color: white;
+  padding: 10px;
+  justify-content: space-between;
+  min-height: 50px;
+  width: var(--windowWidth);
+  max-width: 500px;
+  transition: all 0.5s ease;
+}
+
+.sendmsg .text-area {
+  flex: 1;
+  margin-bottom: -4px;
+  transition: all 5s ease;
+}
+
+#chatInput {
+  width: 100%;
+  resize: none;
+  padding: 5px 15px;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  overflow-wrap: break-word;
+  height: var(--inputHeight);
+  scrollbar-width: none;
+  background-color: white;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+
+.sendmsg .add-container .add {
+  font-size: 25px;
+}
+
+.sendmsg .sendBtn {
+  display: none;
+}
+
+.sendmsg .showSendBtn {
+  display: flex;
+  background-color: green;
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.hideMedia {
+  display: none;
+}
+
+@media (min-width: 376px) and (max-width: 431px) {
+  .chatbody .chat-item {
+    font-size: 18px;
+  }
+}
