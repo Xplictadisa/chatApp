@@ -55,7 +55,7 @@ backIcon.addEventListener('click', () => {
 
 
 /* FUNCTIONS */
-export function chatHTML() {
+function chatHTML() {
   return (
     ` <div class="main-container">
         <!-- title -->
@@ -88,14 +88,14 @@ export function chatHTML() {
   )
 }
 
-export function chatScrollAnim() {
+function chatScrollAnim() {
   let lastScroll = 0
   mainContHTML.addEventListener('scroll', () => {
   headerAndInputAnim(lastScroll)
 })
 }
 
-export function ObserverFunc(mainContHTML, pageTitleCont, chatHeader, header) {
+function ObserverFunc(mainContHTML, pageTitleCont, chatHeader, header) {
   const observer1 = new IntersectionObserver((entries) => {
     entries.forEach(() => {
       chatHeader.classList.toggle('showChatHeader');
@@ -133,7 +133,7 @@ function headerAndInputAnim(lastScroll) {
   }
 }
 
-export function renderContact(contactListCont) {
+function renderContact(contactListCont) {
   const contactHTML = contactList.map((contact) => {
   return (
     `<div class="contact no${contact.id}">
