@@ -15,14 +15,14 @@ export const contactList = [
 
   {
     id: 3,
-    name: 'Mary',
+    name: 'Ajoke',
     image: '../media/image/penguin-svgrepo-com.svg',
     lastMsg: 'Hello Buddy'
   },
 
   {
     id: 4,
-    name: 'Susan',
+    name: 'Esther',
     image: '../media/image/penguin-svgrepo-com.svg',
     lastMsg: 'Holla!'
   }
