@@ -3,9 +3,9 @@ import {scrollAnim } from "./shared.js";
 const main = document.querySelector('main')
 const settingsBtn = document.querySelector('.footer-items.settings')
 const header = document.querySelector('header');
-const headerTitle = document.querySelector('.head-container .middle');
+const middle = document.querySelector('.middle');
 const right = document.querySelector('.right') ;
-const ellipsis = document.querySelector('.icon.ellipsis');
+const left = document.querySelector('.left')
 
 
 /* FUNCTIONS */
@@ -16,7 +16,9 @@ export function settingsComponent() {
 
 function settingsBtnFun() {
    settingsBtn.addEventListener('click', () => {
-    header.style.opacity = '0'
+    left.innerHTML = ''
+    right.innerHTML = ''
+    // header.style.opacity = '0'
     main.innerHTML = settingsHTML();
     /* EACH ELEMENT ASSIGNMENT WHEN SETTINGS HTML IS PRINTED ON THE PAGE */
     const settingCompContainer = document.querySelector('.settingComponentContainer');
@@ -27,7 +29,7 @@ function settingsBtnFun() {
     
     /* MODIFY THE SETTING PAGE UI ON INPUT FOCUS */
     settingSearchInput.addEventListener('focus', () => {
-      header.style.display = 'none'
+      // header.style.display = 'none'
       settingCancelSearch.style.display = 'block'
     })
 
@@ -41,15 +43,13 @@ function settingsBtnFun() {
 }
 
 function updateSettingsHeader() {
-  header.style.opacity = '1'
   header.style.backgroundColor = 'rgb(155, 154, 154, 0.1)'
-  right.style.opacity = '0'
-  ellipsis.style.opacity = '0'
-  headerTitle.textContent = 'Settings'
+  middle.textContent = 'Settings'
 }
 
 function restoreSettingsHeader() {
-  header.style.opacity = '0'
+  header.style.backgroundColor = ''
+  middle.textContent = ''
 }
 
 export function settingsHTML() {

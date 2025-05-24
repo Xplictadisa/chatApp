@@ -2,27 +2,28 @@ import { contactList } from "./Data/data.js"
 import { scrollAnim } from "./shared.js";
 
 const header = document.querySelector('header');
-const headerTitle = document.querySelector('.head-container .middle');
+const middle = document.querySelector('.middle');
 const main = document.querySelector('main');
 const chatBtn = document.querySelector('.footer-items.chats');
 const footer = document.querySelector('footer');
 const right = document.querySelector('.right') ;
-const ellipsis = document.querySelector('.icon.ellipsis');
+const left = document.querySelector('.left')
 
 
 /* RENDER CHAT COMPONENT ON CHAT BTN CLICKED*/
 chatBtn.addEventListener('click', () => {
   chatComponent();
-  header.style.opacity = '1'
-  header.style.backgroundColor = ''
-  right.style.opacity = '1'
-  ellipsis.style.opacity = '1'
-  headerTitle.textContent = ''
 })
 
 /* FUNCTIONS */
 export function chatComponent() {
-
+  left.innerHTML = (`
+    <ion-icon class="icon ellipsis" name="ellipsis-horizontal-sharp"></ion-icon>`
+  )
+  right.innerHTML = (`
+    <ion-icon class="icon camera" name="camera-sharp"></ion-icon>
+    <ion-icon class="icon add" name="add-outline"></ion-icon>`
+  )
   main.innerHTML = chatHTML();
 
   /* EACH ELEMENT DECLARATION AFTER MOUNTED ON THE DOM */
@@ -124,11 +125,11 @@ contactListCont.innerHTML = contactHTML.join('');
 }
 
 function updateChatHeader() {
-  headerTitle.textContent = 'Chat'
+  middle.textContent = 'Chat'
   header.style.backgroundColor = 'rgb(155, 154, 154, 0.1)'
 }
 
 function restoreChatHeader() {
-  headerTitle.textContent = ''
+  middle.textContent = ''
   header.style.backgroundColor = ''
 }
