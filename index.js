@@ -1,5 +1,11 @@
-import './chatComponent.js'
-import './settingsComponent.js'
+// import './chatComponent.js'
+// await import('./chatComponent.js')
+import { chatComponent } from './chatComponent.js'
+import { settingsComponent } from './settingsComponent.js';
 
-const settingsBtn = document.querySelector('.footer-items.settings')
-console.log(settingsBtn)
+/*RENDER CHAT COMPONENT ON PAGE LOAD */
+chatComponent();
+
+/* SETTINGS COMPONENT */
+settingsComponent()
+

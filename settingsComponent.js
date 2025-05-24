@@ -1,15 +1,70 @@
-function settingsHTML() {
+import {scrollAnim } from "./shared.js";
+
+const main = document.querySelector('main')
+const settingsBtn = document.querySelector('.footer-items.settings')
+const header = document.querySelector('header');
+const headerTitle = document.querySelector('.head-container .middle');
+const right = document.querySelector('.right') ;
+const ellipsis = document.querySelector('.icon.ellipsis');
+
+
+/* FUNCTIONS */
+
+export function settingsComponent() {
+  settingsBtnFun()
+}
+
+function settingsBtnFun() {
+   settingsBtn.addEventListener('click', () => {
+    header.style.opacity = '0'
+    main.innerHTML = settingsHTML();
+    /* EACH ELEMENT ASSIGNMENT WHEN SETTINGS HTML IS PRINTED ON THE PAGE */
+    const settingCompContainer = document.querySelector('.settingComponentContainer');
+    const settingsInputContainer = document.querySelector('.settingsInputContainer');
+    const settingsTitleCont = document.querySelector('.settings-title-container')
+    const settingSearchInput = document.querySelector('.settingsSearchInput')
+    const settingCancelSearch = document.querySelector('.settingCancelSearch')
+    
+    /* MODIFY THE SETTING PAGE UI ON INPUT FOCUS */
+    settingSearchInput.addEventListener('focus', () => {
+      header.style.display = 'none'
+      settingCancelSearch.style.display = 'block'
+    })
+
+    settingCancelSearch.addEventListener('click', () => {
+      settingCancelSearch.style.display = 'none'
+    })
+  
+/* FOR ANIMATING THE DIV= 'SETTING' AND INPUT ON SCROLL*/
+    scrollAnim(settingCompContainer, settingCompContainer, settingsInputContainer, settingsTitleCont, updateSettingsHeader, restoreSettingsHeader);
+  })
+}
+
+function updateSettingsHeader() {
+  header.style.opacity = '1'
+  header.style.backgroundColor = 'rgb(155, 154, 154, 0.1)'
+  right.style.opacity = '0'
+  ellipsis.style.opacity = '0'
+  headerTitle.textContent = 'Settings'
+}
+
+function restoreSettingsHeader() {
+  header.style.opacity = '0'
+}
+
+export function settingsHTML() {
   return (
     `<div class="settingComponentContainer">
-      <div class="page-title-container">
-          <div class="page-title js-page-title">
+      <div class="settings-title-container">
+          <div class="settings-title js-settings-title">
             <h2>Settings</h2>
           </div>
       </div>
       <!-- search input -->
-      <div class="inputContainer">
+      <div class="settingsInputContainer">
         <ion-icon class="search-icon" name="search-outline"></ion-icon>
-        <input type="text" placeholder="Search">
+        <input class="settingsSearchInput" type="text" placeholder="Search">
+        <p class="settingCancelSearch">Cancel</p>
       </div>
 
       <!-- profile settings -->

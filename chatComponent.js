@@ -1,66 +1,84 @@
 import { contactList } from "./Data/data.js"
+import { scrollAnim } from "./shared.js";
 
-/*RENDER CHAT PAGE ON PAGE LOAD */
-const main = document.querySelector('main');
-main.innerHTML = chatHTML();
-
-/* EACH ELEMENT DECLARATION */
-const mainContHTML = document.querySelector('.main-container');
-const searchInput = document.querySelector('.js-search-input');
-const searchContHTML = document.querySelector('.search-container');
-const navContainer = document.querySelector('.nav-container');
-const pageTitleCont = document.querySelector('.page-title-container');
-const chatHeader = document.querySelector('.head-container .middle');
 const header = document.querySelector('header');
-const contactListCont = document.querySelector('.contactList-container');
-const sendIcon = document.querySelector('.icon.send')
-const backIcon = document.querySelector('.icon.back')
+const headerTitle = document.querySelector('.head-container .middle');
+const main = document.querySelector('main');
+const chatBtn = document.querySelector('.footer-items.chats');
 const footer = document.querySelector('footer');
-
-/* FOR ANIMATING THE DIV= 'CHAT' AND INPUT ON SCROLL*/
-chatScrollAnim();
-ObserverFunc(mainContHTML, pageTitleCont, chatHeader, header);
-
-/* RENDER CONTACT ON PAGE LOAD */
-renderContact(contactListCont);
+const right = document.querySelector('.right') ;
+const ellipsis = document.querySelector('.icon.ellipsis');
 
 
-searchInput.addEventListener('focus', () => {
-  navContainer.style.display = 'none';
-  contactListCont.style.display = 'none'
-  pageTitleCont.style.display = 'none'
-  header.style.display = 'none'
-  searchContHTML.style.position = 'fixed'
-  searchContHTML.style.top = 0;
-  const leftPos = searchContHTML.getBoundingClientRect().left
-  searchContHTML.style.left = leftPos
-  searchContHTML.style.padding = '0 10px'
-  sendIcon.style.display = 'block'
-  backIcon.style.display = 'block'
-  footer.style.display = 'none'
-});
-
-backIcon.addEventListener('click', () => {
-  navContainer.style.display = 'flex'
-  contactListCont.style.display = 'flex'
-  pageTitleCont.style.display = 'flex'
-  header.style.display = 'flex'
-  searchContHTML.style.position = 'sticky'
-  searchContHTML.style.top = '40px'
-   searchContHTML.style.padding = ''
-  sendIcon.style.display = 'none'
-  backIcon.style.display = 'none'
-  footer.style.display = 'flex'
+/* RENDER CHAT COMPONENT ON CHAT BTN CLICKED*/
+chatBtn.addEventListener('click', () => {
+  chatComponent();
+  header.style.opacity = '1'
+  header.style.backgroundColor = ''
+  right.style.opacity = '1'
+  ellipsis.style.opacity = '1'
+  headerTitle.textContent = ''
 })
 
-
 /* FUNCTIONS */
+export function chatComponent() {
+
+  main.innerHTML = chatHTML();
+
+  /* EACH ELEMENT DECLARATION AFTER MOUNTED ON THE DOM */
+  const chatContHTML = document.querySelector('.chat-container');
+  const searchInput = document.querySelector('.js-search-input');
+  const searchContHTML = document.querySelector('.search-container');
+  const navContainer = document.querySelector('.nav-container');
+  const chatTitleCont = document.querySelector('.chat-title-container');
+  const contactListCont = document.querySelector('.contactList-container');
+  const sendIcon = document.querySelector('.icon.send')
+  const backIcon = document.querySelector('.icon.back')
+
+  /* FOR ANIMATING THE DIV= 'CHAT' AND INPUT ON SCROLL*/
+  scrollAnim(chatContHTML, chatContHTML, searchContHTML, chatTitleCont, updateChatHeader, restoreChatHeader);
+ 
+
+  /* RENDER CONTACT ON PAGE LOAD */
+  renderContact(contactListCont);
+
+
+  searchInput.addEventListener('focus', () => {
+    navContainer.style.display = 'none';
+    contactListCont.style.display = 'none'
+    chatTitleCont.style.display = 'none'
+    header.style.display = 'none'
+    searchContHTML.style.position = 'fixed'
+    searchContHTML.style.top = 0;
+    const leftPos = searchContHTML.getBoundingClientRect().left
+    searchContHTML.style.left = leftPos
+    searchContHTML.style.padding = '0 10px'
+    sendIcon.style.display = 'block'
+    backIcon.style.display = 'block'
+    footer.style.display = 'none'
+  });
+
+  backIcon.addEventListener('click', () => {
+    navContainer.style.display = 'flex'
+    contactListCont.style.display = 'flex'
+    chatTitleCont.style.display = 'flex'
+    header.style.display = 'flex'
+    searchContHTML.style.position = 'sticky'
+    searchContHTML.style.top = '40px'
+    searchContHTML.style.padding = ''
+    sendIcon.style.display = 'none'
+    backIcon.style.display = 'none'
+    footer.style.display = 'flex'
+  })
+}
+
+
 function chatHTML() {
   return (
-    ` <div class="main-container">
+    ` <div class="chat-container">
         <!-- title -->
-      <div class="page-title-container">
-        <div class="page-title js-page-title">
+      <div class="chat-title-container">
+        <div class="chat-title js-chat-title">
           <h2>Chats</h2>
         </div>
       </div>
@@ -88,51 +106,6 @@ function chatHTML() {
   )
 }
 
-function chatScrollAnim() {
-  let lastScroll = 0
-  mainContHTML.addEventListener('scroll', () => {
-  headerAndInputAnim(lastScroll)
-})
-}
-
-function ObserverFunc(mainContHTML, pageTitleCont, chatHeader, header) {
-  const observer1 = new IntersectionObserver((entries) => {
-    entries.forEach(() => {
-      chatHeader.classList.toggle('showChatHeader');
-      header.classList.toggle('changeBackground')
-    })
-  }, {
-    root: mainContHTML,
-    rootMargin: '0px',
-    threshold: 0.1
-  });
-
-  observer1.observe(pageTitleCont)
-}
-
-function headerAndInputAnim(lastScroll) {
-  const calculation = (30 - mainContHTML.scrollTop) / 30
-   if (lastScroll < mainContHTML.scrollTop) {
-    searchContHTML.style.transform = `scaleY(${calculation})`;
-    document.documentElement.style.setProperty('--inputOpacity', '0');
-    /* to fix negative scalling */
-      if (calculation < 0) {
-        searchContHTML.style.transform = `scaleY(0)`
-      }
-   } else {
-    searchContHTML.style.transform = `scaleY(1)`
-    document.documentElement.style.setProperty('--inputOpacity', '1')
-   }
-
-  if (mainContHTML.scrollTop >= 40) {
-    pageTitleCont.style.position = 'relative'
-    pageTitleCont.style.top = `40px`
-  } else {
-    pageTitleCont.style.position = 'sticky'
-    pageTitleCont.style.top = 0
-  }
-}
-
 function renderContact(contactListCont) {
   const contactHTML = contactList.map((contact) => {
   return (
@@ -148,4 +121,14 @@ function renderContact(contactListCont) {
   )
 })
 contactListCont.innerHTML = contactHTML.join('');
+}
+
+function updateChatHeader() {
+  headerTitle.textContent = 'Chat'
+  header.style.backgroundColor = 'rgb(155, 154, 154, 0.1)'
+}
+
+function restoreChatHeader() {
+  headerTitle.textContent = ''
+  header.style.backgroundColor = ''
 }
