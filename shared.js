@@ -1,4 +1,5 @@
-
+const header = document.querySelector('header');
+const middle = document.querySelector('.middle');
 // export function ObserverFunc(param1, param2, a, b, c) {
 //   const observer1 = new IntersectionObserver((entries) => {
 //     entries.forEach(() => {
@@ -49,3 +50,13 @@ export function headerAndInputAnim(lastScroll, param2, param3, param4) {
   }
 }
 
+// FUNCTIONS THAT UPDATE THE HEADER BASED ON SCROLL
+export function updateHeader(param) {
+  header.style.backgroundColor = 'rgb(155, 154, 154, 0.1)'
+  middle.textContent = param
+}
+
+export function restoreHeader() {
+  header.style.backgroundColor = ''
+  middle.textContent = ''
+}

@@ -1,8 +1,7 @@
 import { contactList } from "./Data/data.js"
-import { scrollAnim } from "./shared.js";
+import { scrollAnim, updateHeader, restoreHeader} from "./shared.js";
 
 const header = document.querySelector('header');
-const middle = document.querySelector('.middle');
 const main = document.querySelector('main');
 const chatBtn = document.querySelector('.footer-items.chats');
 const footer = document.querySelector('footer');
@@ -37,7 +36,7 @@ export function chatComponent() {
   const backIcon = document.querySelector('.icon.back')
 
   /* FOR ANIMATING THE DIV= 'CHAT' AND INPUT ON SCROLL*/
-  scrollAnim(chatContHTML, chatContHTML, searchContHTML, chatTitleCont, updateChatHeader, restoreChatHeader);
+  scrollAnim(chatContHTML, chatContHTML, searchContHTML, chatTitleCont, () => {updateHeader('Chat')}, restoreHeader);
  
 
   /* RENDER CONTACT ON PAGE LOAD */
@@ -122,14 +121,4 @@ function renderContact(contactListCont) {
   )
 })
 contactListCont.innerHTML = contactHTML.join('');
-}
-
-function updateChatHeader() {
-  middle.textContent = 'Chat'
-  header.style.backgroundColor = 'rgb(155, 154, 154, 0.1)'
-}
-
-function restoreChatHeader() {
-  middle.textContent = ''
-  header.style.backgroundColor = ''
 }

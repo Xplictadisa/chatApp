@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CALLS</title>
+  <link rel="stylesheet" href="../callsComponent.css">
+</head>
+<body>
+   <div class="callsComponentContainer">
+    <div class="calls-title-container">
+        <div class="calls-title js-calls-title">
+          <h2>Calls</h2>
+        </div>
+    </div>
+    <!-- calls search input -->
+    <div class="callsInputContainer">
+        <div class="call-input-cont">
+          <ion-icon class="search-icon" name="search-outline"></ion-icon>
+          <input class="callsSearchInput" type="text" placeholder="Search">
+        </div>
+        <p class="callsCancelSearch">Cancel</p>
+    </div>
+    <!-- favorites -->
+    <div class="favorites-container">
+      <p class="favorites-title">Favorites</p>
+      <div class="add-favorite-container">
+        <ion-icon class="icon add" name="add-outline"></ion-icon>
+        <p>Add favorite</p>
+      </div>
+    </div>
+    <!-- Recent -->
+     <div class="recent-container">
+      <p class="recent-title">Recent</p>
+      <div class="recent-calls-container">
+        <div class="calls-list">
+          <img src="/media/image/penguin-svgrepo-com.svg" alt="">
+          <div class="caller">
+            <p>Mr Malik cppppppppppp</p>
+            <span>incoming</span>
+          </div>
+          <div class="time">
+            <span>10:48 AM</span>
+            <ion-icon class="icon" name="information-circle-outline"></ion-icon>
+          </div>
+        </div>
+      </div>
+     </div>
+  </div>
+
+  <!-- ionicons cdn -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

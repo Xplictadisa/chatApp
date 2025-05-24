@@ -27,3 +27,23 @@ export const contactList = [
     lastMsg: 'Holla!'
   }
 ];
+
+export const callLogs = [
+  {
+    name: 'Mr Malik',
+    image: '../media/image/penguin-svgrepo-com.svg'
+  },
+  {
+    name: 'John',
+    image: '../media/image/penguin-svgrepo-com.svg'
+  },
+  {
+    name: 'Sam',
+    image: '../media/image/penguin-svgrepo-com.svg'
+  },
+  {
+    name: 'Mariam',
+    image: '../media/image/penguin-svgrepo-com.svg'
+  }
+]
+

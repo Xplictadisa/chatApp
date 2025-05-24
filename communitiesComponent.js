@@ -1,16 +1,29 @@
 const main = document.querySelector('main')
-export const communitiesBtn = document.querySelector('.footer-items.communities')
-console.log(communitiesBtn)
+const communitiesBtn = document.querySelector('.footer-items.communities')
+const right = document.querySelector('.right')
+const left = document.querySelector('.left')
+const middle = document.querySelector('.middle')
 
 communitiesBtn.addEventListener('click', () => {
-  main.innerHTML = communitiesHTML()
+  communitiesComponent()
 })
 
 /* FUNCTIONS */
+export function communitiesComponent() {
+ communitiesBtn.addEventListener('click', () => {
+  right.innerHTML = (
+  `<ion-icon class="icon add" name="add-outline"></ion-icon>`
+  )
+
+  left.innerHTML = ''
+
+  main.innerHTML = communitiesHTML()
+ })
+}
 
 function communitiesHTML() {
   return(
-    ` <div class="CommunitiesComponentContainer">
+    ` <div class="communitiesComponentContainer">
     <div class="communities-title-container">
         <div class="communities-title js-communities-title">
           <h2>Communities</h2>

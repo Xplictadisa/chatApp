@@ -1,9 +1,7 @@
-import {scrollAnim } from "./shared.js";
+import {scrollAnim, updateHeader, restoreHeader} from "./shared.js";
 
 const main = document.querySelector('main')
 const settingsBtn = document.querySelector('.footer-items.settings')
-const header = document.querySelector('header');
-const middle = document.querySelector('.middle');
 const right = document.querySelector('.right') ;
 const left = document.querySelector('.left')
 
@@ -38,21 +36,12 @@ function settingsBtnFun() {
     })
   
 /* FOR ANIMATING THE DIV= 'SETTING' AND INPUT ON SCROLL*/
-    scrollAnim(settingCompContainer, settingCompContainer, settingsInputContainer, settingsTitleCont, updateSettingsHeader, restoreSettingsHeader);
+    scrollAnim(settingCompContainer, settingCompContainer, settingsInputContainer, settingsTitleCont, () => {updateHeader('settings')}, restoreHeader);
   })
 }
 
-function updateSettingsHeader() {
-  header.style.backgroundColor = 'rgb(155, 154, 154, 0.1)'
-  middle.textContent = 'Settings'
-}
 
-function restoreSettingsHeader() {
-  header.style.backgroundColor = ''
-  middle.textContent = ''
-}
-
-export function settingsHTML() {
+function settingsHTML() {
   return (
     `<div class="settingComponentContainer">
       <div class="settings-title-container">
@@ -60,7 +49,7 @@ export function settingsHTML() {
             <h2>Settings</h2>
           </div>
       </div>
-      <!-- search input -->
+      <!-- settings search input -->
       <div class="settingsInputContainer">
         <ion-icon class="search-icon" name="search-outline"></ion-icon>
         <input class="settingsSearchInput" type="text" placeholder="Search">
@@ -131,7 +120,7 @@ export function settingsHTML() {
       <!-- Help -->
       <div class="help-container">
         <div class="item">
-          <ion-icon class="icon" name="swap-vertical-outline"></ion-icon>
+          <ion-icon class="icon" name="information-circle-outline"></ion-icon>
           <span>Help</span>
         </div>
         <div class="item">
