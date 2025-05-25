@@ -4,6 +4,7 @@ import { chatComponent } from './chatComponent.js'
 import { settingsComponent } from './settingsComponent.js';
 import { callsComponent } from './callsComponent.js';
 import { communitiesComponent } from './communitiesComponent.js';
+import { statusUpdateComponent } from './statusUpdateComponent.js';
 
 /*RENDER CHAT COMPONENT ON PAGE LOAD */
 chatComponent();
@@ -16,3 +17,6 @@ communitiesComponent()
 
 /* CALLS COMPONENT */
 callsComponent()
+
+/* STATUS UPDATE COMPONENT */
+statusUpdateComponent()

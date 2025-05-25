@@ -1,5 +1,5 @@
-import {scrollAnim, updateHeader, restoreHeader} from "./shared.js";
-import { callLogs } from "./Data/data.js";
+import {scrollAnim, updateHeader, restoreHeader} from "../utility/shared.js";
+import { callLogs } from "../Data/data.js";
 
 const main = document.querySelector('main')
 const callsBtn = document.querySelector('.footer-items.calls')
@@ -19,9 +19,8 @@ export function callsComponent() {
       left.innerHTML = (`
       <ion-icon class="icon ellipsis" name="ellipsis-horizontal-sharp"></ion-icon>`
       )
-      right.innerHTML = (`
-      <ion-icon class="icon add" name="add-outline"></ion-icon>`
-      )
+      right.innerHTML = '';
+      
       main.innerHTML = callsHTML();
 
       /* EACH ELEMENT DECLARATION AFTER MOUNTED ON THE DOM */

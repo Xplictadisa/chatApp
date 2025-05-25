@@ -1,4 +1,15 @@
-
+.communitiesComponentContainer {
+   width: 100%;
+  height: 100vh;
+  max-width: 450px;
+  position: relative;
+  overflow: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  /* border: 2px solid red; */
+  padding-bottom: 1000px;
+}
 .communities-title-container {
   height: 40px;
   /* border: 1px solid red; */

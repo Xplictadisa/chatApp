@@ -1,4 +1,4 @@
-import {scrollAnim, updateHeader, restoreHeader} from "./shared.js";
+import {scrollAnim, updateHeader, restoreHeader} from "../utility/shared.js";
 
 const main = document.querySelector('main')
 const settingsBtn = document.querySelector('.footer-items.settings')

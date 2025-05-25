@@ -1,5 +1,5 @@
-import { contactList } from "./Data/data.js"
-import { scrollAnim, updateHeader, restoreHeader} from "./shared.js";
+import { contactList } from "../Data/data.js"
+import { scrollAnim, updateHeader, restoreHeader} from "../utility/shared.js";
 
 const header = document.querySelector('header');
 const main = document.querySelector('main');
