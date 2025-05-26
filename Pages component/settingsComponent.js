@@ -1,23 +1,23 @@
 import {scrollAnim, updateHeader, restoreHeader} from "../utility/shared.js";
 
 const main = document.querySelector('main')
-const settingsBtn = document.querySelector('.footer-items.settings')
+// const settingsBtn = document.querySelector('.footer-items.settings')
 const right = document.querySelector('.right') ;
 const left = document.querySelector('.left')
+const middle = document.querySelector('.middle')
 
 
 /* FUNCTIONS */
 
-export function settingsComponent() {
-  settingsBtnFun()
-}
+//  function settingsBtnFun() {
+//   settingsBtnFun()
+// }
 
-function settingsBtnFun() {
-   settingsBtn.addEventListener('click', () => {
-    left.innerHTML = ''
-    right.innerHTML = ''
-    // header.style.opacity = '0'
+export function settingsComponent() {
+    
+    updateSettingsPageHeader()
     main.innerHTML = settingsHTML();
+
     /* EACH ELEMENT ASSIGNMENT WHEN SETTINGS HTML IS PRINTED ON THE PAGE */
     const settingCompContainer = document.querySelector('.settingComponentContainer');
     const settingsInputContainer = document.querySelector('.settingsInputContainer');
@@ -37,7 +37,7 @@ function settingsBtnFun() {
   
 /* FOR ANIMATING THE DIV= 'SETTING' AND INPUT ON SCROLL*/
     scrollAnim(settingCompContainer, settingCompContainer, settingsInputContainer, settingsTitleCont, () => {updateHeader('settings')}, restoreHeader);
-  })
+  
 }
 
 
@@ -147,4 +147,11 @@ function settingsHTML() {
         </div>
   </div>`
   )
+}
+
+/*THIS FUNCTION UPDATE THE SETTINGS PAGE HEADER */
+function updateSettingsPageHeader() {
+  left.innerHTML = ''
+  right.innerHTML = ''
+  middle.innerHTML = ''
 }

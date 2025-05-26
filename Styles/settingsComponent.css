@@ -1,6 +1,6 @@
 .settingComponentContainer {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   max-width: 450px;
   position: relative;
   overflow: scroll;
@@ -8,7 +8,7 @@
   scroll-behavior: smooth;
   scrollbar-width: none;
   /* border: 2px solid red; */
-  padding-bottom: 1000px;
+  padding-bottom: 10px;
 }
 
 .settingComponentContainer .icon {

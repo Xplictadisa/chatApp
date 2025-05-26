@@ -1,29 +1,29 @@
 export const contactList = [
   {
-    id: 1,
+    id: '2020',
     name: 'Dave',
-    image: '../media/image/penguin-svgrepo-com.svg',
+    image: '../media/image/cat.jpg',
     lastMsg: 'can you come to my office'
   },
 
   {
-    id: 2,
+    id: '2021',
     name: 'Frank',
     image: '../media/image/penguin-svgrepo-com.svg',
     lastMsg: 'I need to talk to you' 
   },
 
   {
-    id: 3,
+    id: '2022',
     name: 'Ajoke',
-    image: '../media/image/penguin-svgrepo-com.svg',
+    image: '../media/image/cat2.jpg',
     lastMsg: 'Hello Buddy'
   },
 
   {
-    id: 4,
+    id: '2023',
     name: 'Esther',
-    image: '../media/image/penguin-svgrepo-com.svg',
+    image: '../media/image/cat3.jpg',
     lastMsg: 'Holla!'
   }
 ];

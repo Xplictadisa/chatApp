@@ -19,7 +19,9 @@ body {
   padding: 0 10px;
   height: var(--viewportHeight);
   overflow: hidden;
+  /* border: 2px solid goldenrod; */
 }
+
 
 /* Header styles */
 header {
@@ -42,6 +44,7 @@ header .head-container {
   max-width: 450px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .icon {

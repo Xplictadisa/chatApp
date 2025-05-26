@@ -2,25 +2,21 @@ import {scrollAnim, updateHeader, restoreHeader} from "../utility/shared.js";
 import { callLogs } from "../Data/data.js";
 
 const main = document.querySelector('main')
-const callsBtn = document.querySelector('.footer-items.calls')
+// const callsBtn = document.querySelector('.footer-items.calls')
 const right = document.querySelector('.right') ;
 const left = document.querySelector('.left')
 const middle = document.querySelector('.middle');
 const footer = document.querySelector('footer');
 
 /* RENDER CALLS COMPONENT ON CALL BTN CLICKED*/
-callsBtn.addEventListener('click', () => {
-  callsComponent();
-})
+// callsBtn.addEventListener('click', () => {
+//   callsComponent();
+// })
 
 /* FUNCTIONS */
 export function callsComponent() {
-   callsBtn.addEventListener('click', () => {
-      left.innerHTML = (`
-      <ion-icon class="icon ellipsis" name="ellipsis-horizontal-sharp"></ion-icon>`
-      )
-      right.innerHTML = '';
-      
+   
+      updateCallsPageHeader()
       main.innerHTML = callsHTML();
 
       /* EACH ELEMENT DECLARATION AFTER MOUNTED ON THE DOM */
@@ -35,7 +31,6 @@ export function callsComponent() {
 
     /* FOR ANIMATING THE DIV= 'SETTING' AND INPUT ON SCROLL*/
       scrollAnim(callsComponentContainer, callsComponentContainer, callsInputContainer, callsTitleContainer, () => {updateHeader('Calls')}, restoreHeader);
-   })
 }
 
 function callsHTML() {
@@ -88,4 +83,13 @@ function renderCallLog(callLogCont) {
   )
 })
     callLogCont.innerHTML = callLogHTML.join('');
+}
+
+/**THIS FUNCTION UPDATE CALLS PAGE HEADER */
+function updateCallsPageHeader() {
+  left.innerHTML = (`
+      <ion-icon class="icon ellipsis" name="ellipsis-horizontal-sharp"></ion-icon>`
+      )
+  right.innerHTML = ''
+  middle.innerHTML = ''
 }

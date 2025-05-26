@@ -60,3 +60,34 @@ export function restoreHeader() {
   header.style.backgroundColor = ''
   middle.textContent = ''
 }
+
+// FUNCTIONS THAT SET  THE PAGE FOOTER ELEMENT
+export function renderPageFooter() {
+  const pageFooterHTML =  (
+    ` <div class="footer-items updates" data-type = 'status'>
+        <ion-icon class="icon" name="disc-outline" data-type = 'status'></ion-icon>
+        <small data-type = 'status'>Updates</small>
+      </div>
+      <div class="footer-items calls" data-type = 'calls'>
+        <ion-icon class="icon" name="call-outline" data-type = 'calls'></ion-icon>
+        <small data-type = 'calls'>Calls</small>
+      </div>
+      <div class="footer-items communities" data-type = 'communities'>
+        <ion-icon class="icon" name="people-outline" data-type = 'communities'></ion-icon>
+        <small data-type = 'communities'>Communities</small>
+      </div>
+      <div class="footer-items chats" data-type = 'chat'>
+        <ion-icon class="icon" name="chatbubbles-outline" data-type = 'chat'></ion-icon>
+        <small data-type = 'chat'>Chats</small>
+      </div>
+      <div class="footer-items settings" data-type = 'settings'>
+        <ion-icon class="icon" name="cog-outline" data-type = 'settings'></ion-icon>
+        <small data-type = 'settings'>Settings</small>
+      </div>`
+  )
+  return pageFooterHTML
+}
+
+function saveToStorage(data) {
+  
+}

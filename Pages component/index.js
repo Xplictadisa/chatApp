@@ -5,18 +5,37 @@ import { settingsComponent } from './settingsComponent.js';
 import { callsComponent } from './callsComponent.js';
 import { communitiesComponent } from './communitiesComponent.js';
 import { statusUpdateComponent } from './statusUpdateComponent.js';
+import { renderPageFooter } from '../utility/shared.js';
+
+const footerContainer = document.querySelector('.footer-container')
+footerContainer.innerHTML = renderPageFooter() /**mount footer children element on the Dom */
 
 /*RENDER CHAT COMPONENT ON PAGE LOAD */
 chatComponent();
 
-/* SETTINGS COMPONENT */
-settingsComponent()
+/**LISTEN FOR FOOTER CONTAINER CHILD ELEM CLICKED AND EXECUTE SOME CODE ACCORDINGLY */
+footerContainer.addEventListener('click', (e) => {
+  const {type} = e.target.dataset 
+ 
+  switch (type) {
+    case 'status': statusUpdateComponent()
+      break;
 
-/*COMMUNITIES COMPONENT */
-communitiesComponent()
+    case 'calls': callsComponent()
+      break;
+    
+    case 'communities': communitiesComponent()
+      break;
+    
+    case 'chat': chatComponent()
+      break;
+    
+    case 'settings': settingsComponent()
+      break;
+  
+    default: console.log('error')
+      break;
+  }
+})
 
-/* CALLS COMPONENT */
-callsComponent()
 
-/* STATUS UPDATE COMPONENT */
-statusUpdateComponent()

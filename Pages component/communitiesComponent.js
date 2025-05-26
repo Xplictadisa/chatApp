@@ -1,24 +1,18 @@
 const main = document.querySelector('main')
-const communitiesBtn = document.querySelector('.footer-items.communities')
+// const communitiesBtn = document.querySelector('.footer-items.communities')
 const right = document.querySelector('.right')
 const left = document.querySelector('.left')
 const middle = document.querySelector('.middle')
 
-communitiesBtn.addEventListener('click', () => {
-  communitiesComponent()
-})
+/* RENDER COMMUNITIES COMPONENT ON CALL BTN CLICKED*/
+// communitiesBtn.addEventListener('click', () => {
+//   communitiesComponent()
+// })
 
 /* FUNCTIONS */
 export function communitiesComponent() {
- communitiesBtn.addEventListener('click', () => {
-  right.innerHTML = (
-  `<ion-icon class="icon add" name="add-outline"></ion-icon>`
-  )
-
-  left.innerHTML = ''
-
+  updateCommunitiesPageHeader()
   main.innerHTML = communitiesHTML()
- })
 }
 
 function communitiesHTML() {
@@ -42,4 +36,13 @@ function communitiesHTML() {
         
   </div>`
   )
+}
+
+/** THIS FUNCTION UPDATE COMMUNITIES PAGE HEADER */
+function updateCommunitiesPageHeader() {
+    right.innerHTML = (
+  `<ion-icon class="icon add" name="add-outline"></ion-icon>`
+  )
+  left.innerHTML = ''
+  middle.innerHTML = ''
 }

@@ -1,28 +1,24 @@
 import { contactList } from "../Data/data.js"
-import { scrollAnim, updateHeader, restoreHeader} from "../utility/shared.js";
+import { scrollAnim, updateHeader, restoreHeader, renderPageFooter} from "../utility/shared.js";
 
 const header = document.querySelector('header');
 const main = document.querySelector('main');
-const chatBtn = document.querySelector('.footer-items.chats');
+// const chatBtn = document.querySelector('.footer-items.chats');
 const footer = document.querySelector('footer');
+const footerContainer = document.querySelector('.footer-container');
 const right = document.querySelector('.right') ;
 const left = document.querySelector('.left')
+const middle = document.querySelector('.middle')
 
 
 /* RENDER CHAT COMPONENT ON CHAT BTN CLICKED*/
-chatBtn.addEventListener('click', () => {
-  chatComponent();
-})
+// chatBtn.addEventListener('click', () => {
+//   chatComponent();
+// })
 
 /* FUNCTIONS */
 export function chatComponent() {
-  left.innerHTML = (`
-    <ion-icon class="icon ellipsis" name="ellipsis-horizontal-sharp"></ion-icon>`
-  )
-  right.innerHTML = (`
-    <ion-icon class="icon camera" name="camera-sharp"></ion-icon>
-    <ion-icon class="icon add" name="add-outline"></ion-icon>`
-  )
+  updateChatPageHeader()
   main.innerHTML = chatHTML();
 
   /* EACH ELEMENT DECLARATION AFTER MOUNTED ON THE DOM */
@@ -34,13 +30,17 @@ export function chatComponent() {
   const contactListCont = document.querySelector('.contactList-container');
   const sendIcon = document.querySelector('.icon.send')
   const backIcon = document.querySelector('.icon.back')
+  const chatMessagesContainer = document.querySelector('.chat-message-container')
 
   /* FOR ANIMATING THE DIV= 'CHAT' AND INPUT ON SCROLL*/
   scrollAnim(chatContHTML, chatContHTML, searchContHTML, chatTitleCont, () => {updateHeader('Chat')}, restoreHeader);
  
 
-  /* RENDER CONTACT ON PAGE LOAD */
-  renderContact(contactListCont);
+  /* RENDER ALL ACTIVE CONTACT ON CHAT PAGE ON PAGE LOAD */
+  renderActiveContact(contactListCont);
+
+  /* ADD AN EVENT LISTENER TO EACH CONTACT RENDERED  */
+   openChatMessage(chatMessagesContainer)
 
 
   searchInput.addEventListener('focus', () => {
@@ -101,15 +101,18 @@ function chatHTML() {
       </div>
       <!-- contactList container -->
        <div class="contactList-container"></div>
+
+      <!-- a container for chat messages -->
+      <div class="chat-message-container"></div>
     </div>
     `
   )
 }
 
-function renderContact(contactListCont) {
+function renderActiveContact(contactListCont) {
   const contactHTML = contactList.map((contact) => {
   return (
-    `<div class="contact no${contact.id}">
+    `<div class="contact no${contact.id}" data-contact-id=${contact.id}>
         <div class="img-container">
           <img src="${contact.image}" alt="person">
         </div>
@@ -121,4 +124,74 @@ function renderContact(contactListCont) {
   )
 })
 contactListCont.innerHTML = contactHTML.join('');
+}
+
+function openChatMessage(chatMessagesContainer) {
+  const activeContacts = document.querySelectorAll('.contact')
+  const activeContactsArray = [...activeContacts]
+ 
+  activeContactsArray.forEach((contact) => {
+    contact.addEventListener('click', () => {
+      const chatContainer = document.querySelector('.chat-container')
+      const {contactId} = contact.dataset
+
+      contactList.forEach((contact, index) => {
+        if (contactId === contact.id) {
+         
+          chatMessagesContainer.innerHTML = `
+            <div class="chat-message data-chat-id="${contact.id}">
+              <p>start a conversation with ${contact.name}</p>
+            </div>`
+          chatMessagesContainer.style.transform = 'translateX(-100%)';
+
+          left.innerHTML = (`
+            <div class="leftSidechatMessageHeader">
+              <ion-icon class="backBtn" id="btn${index}" name="chevron-back-outline"></ion-icon>
+              <div class="profile-details">
+                <img src="${contact.image}" alt="">
+                <p>${contact.name}</p>
+              </div>
+            </div>
+            `)
+          right.innerHTML = (`
+            <div class="rightSidechatMessageHeader">
+              <ion-icon class="icon" name="videocam-outline"></ion-icon>
+              <ion-icon class="icon" name="call-outline"></ion-icon>
+            </div>
+            `)
+          middle.innerHTML = ''
+          footerContainer.innerHTML = 'input field'
+          chatContainer.style.overflow = 'hidden'
+          
+
+          /*THIS CLOSE THE CHATMESSAGE CONTAINER */
+          const backBtn = document.getElementById(`btn${index}`)
+          backBtn.addEventListener('click', () => {
+            chatMessagesContainer.style.transform = 'translateX(100%)'
+            updateChatPageHeader()
+            footerContainer.innerHTML = renderPageFooter()
+            chatContainer.style.overflow = 'scroll'
+          })
+        }
+        
+      })
+    })  
+  })
+}
+
+/* THIS FUNCTION UPDATE THE HEADER OF THE CHAT PAGE */
+function updateChatPageHeader() {
+  left.innerHTML = (`
+    <ion-icon class="icon ellipsis" name="ellipsis-horizontal-sharp"></ion-icon>`
+  )
+  right.innerHTML = (`
+    <ion-icon class="icon camera" name="camera-sharp"></ion-icon>
+    <ion-icon class="icon add" name="add-outline"></ion-icon>`
+  )
+  middle.innerHTML = ''
+}
+
+/**THIS FUNCTION UPDATE THE PAGE FOOTER AND RENDER AN INPUT ELEMENT ON THE FOOTER CONTAINER */
+function showMessageInput() {
+
 }
