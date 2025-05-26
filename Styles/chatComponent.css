@@ -2,7 +2,8 @@ main .chat-container {
   width: 100%;
   height: 100%;
   max-width: 450px;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   scroll-behavior: smooth;
   scrollbar-width: none;
   position: relative;
@@ -209,6 +210,7 @@ USER OPEN CHAT WITH A FRIEND */
   display: flex;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 }
 
 .leftSidechatMessageHeader .backBtn {
@@ -229,7 +231,12 @@ USER OPEN CHAT WITH A FRIEND */
   border-radius: 50%;
 }
 
+.rightSidechatMessageHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
 .rightSidechatMessageHeader .icon {
   font-size: 25px;
-  margin-left: 10px;
 }

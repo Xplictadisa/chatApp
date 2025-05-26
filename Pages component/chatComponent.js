@@ -170,7 +170,7 @@ function openChatMessage(chatMessagesContainer) {
             chatMessagesContainer.style.transform = 'translateX(100%)'
             updateChatPageHeader()
             footerContainer.innerHTML = renderPageFooter()
-            chatContainer.style.overflow = 'scroll'
+            chatContainer.style.overflowY = 'scroll'
           })
         }
         
