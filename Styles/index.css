@@ -19,6 +19,7 @@ body {
   padding: 0 10px;
   height: var(--viewportHeight);
   overflow: hidden;
+  scrollbar-width: none;
   /* border: 2px solid goldenrod; */
 }
 
