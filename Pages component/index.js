@@ -33,7 +33,7 @@ footerContainer.addEventListener('click', (e) => {
     case 'settings': settingsComponent()
       break;
   
-    default: console.log('error')
+    default: console.log('')
       break;
   }
 })

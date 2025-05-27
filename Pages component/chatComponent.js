@@ -101,10 +101,9 @@ function chatHTML() {
       </div>
       <!-- contactList container -->
        <div class="contactList-container"></div>
-
-      <!-- a container for chat messages -->
-      <div class="chat-message-container"></div>
     </div>
+    <!-- a container for chat messages -->
+     <div class="chat-message-container"></div>
     `
   )
 }
@@ -160,9 +159,34 @@ function openChatMessage(chatMessagesContainer) {
             </div>
             `)
           middle.innerHTML = ''
-          footerContainer.innerHTML = 'input field'
-          chatContainer.style.overflow = 'hidden'
+          footerContainer.innerHTML = showMessageInput()/**THIS PUT THE INPUT ON THE PAGE */
+          chatContainer.style.overflow = 'hidden';
           
+          /**GET SOME ELEMENT FROM THE INPUT CONTAINER
+           * AFTER RENDERD ON THE PAGE */ 
+          const chatInput = document.getElementById('chatInput');
+          const sendChatBtn = document.querySelector('.js-sendBtn');
+          const mediaHtml = document.querySelector('.js-media');
+          
+          /**ADJUST THE INPUT ELEM AND MAIN ELEM HEIGHT ON INPUT  */
+          chatInput.addEventListener('input', () => {
+            const {height} = footer.getBoundingClientRect();
+        
+            if (chatInput.value !== '') {
+              sendChatBtn.classList.add('showSendBtn');
+              mediaHtml.classList.add('hideMedia')
+            } else {
+              sendChatBtn.classList.remove('showSendBtn');
+              mediaHtml.classList.remove('hideMedia')
+            }
+        
+            chatInput.style.height = '40px';
+            chatInput.style.height = `${Math.min(chatInput.scrollHeight, 80)}px`
+
+             document.documentElement.style.setProperty('--footerHeight', `${height}px`);
+        
+          });
+
 
           /*THIS CLOSE THE CHATMESSAGE CONTAINER */
           const backBtn = document.getElementById(`btn${index}`)
@@ -193,5 +217,24 @@ function updateChatPageHeader() {
 
 /**THIS FUNCTION UPDATE THE PAGE FOOTER AND RENDER AN INPUT ELEMENT ON THE FOOTER CONTAINER */
 function showMessageInput() {
-
+  return (`
+    <div class="sendmsg">
+      <div class="add-container">
+        <ion-icon class="add" name="add-outline"></ion-icon>
+      </div>
+      <div class="text-area js-text-area">
+        <textarea name="" id="chatInput"></textarea>
+      </div>
+      <div class="media js-media">
+        <ion-icon class="icon" name="camera-outline"></ion-icon>
+        <ion-icon class="icon" name="mic-outline"></ion-icon>
+      </div>
+      
+      <div class="sendBtn js-sendBtn">
+        <!-- this div contain a send icon whose display is set to none -->
+         <ion-icon style="font-weight: 800;" name="send-outline"></ion-icon>
+      </div>
+    </div>
+  `)
 }
+

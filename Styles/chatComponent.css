@@ -7,7 +7,6 @@
   scroll-behavior: smooth;
   scrollbar-width: none;
   position: relative;
-  /* border: 1px solid goldenrod; */
 }
 
 .chat-container::-webkit-scrollbar {
@@ -193,7 +192,6 @@ input:focus {
 /* THIS STYLE IS FOR FOR THE CHAT MESSAGES  */
 .chat-message-container {
   padding: 10px;
-  /* border: 2px solid red; */
   width: 100%;
   min-height: 100px;
   height: 100%;

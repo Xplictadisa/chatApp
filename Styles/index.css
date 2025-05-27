@@ -9,6 +9,7 @@
 :root {
  --viewportWidth: 100vw;
  --viewportHeight: 100vh;
+ --footerHeight: 70px;
  --inputOpacity: 1
 }
 
@@ -104,9 +105,10 @@ main {
   justify-content: center;
   width: 100%;
   margin-top: 50px;
-  height: calc(100vh - 120px);
+  height: calc(100vh - 50px - var(--footerHeight));
   overflow: hidden;
   padding: 0 10px;
+  position: relative;
 }
 
 
@@ -116,10 +118,12 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70px;
+  /* height: 70px; */
+  min-height: var(--footerHeight);
   overflow: hidden;
   width: var(--viewportWidth);
-  padding: 0 10px;
+  padding: 10px;
+  /* transform: translateY(1500px); */
 }
 
 .footer-container {
@@ -139,4 +143,68 @@ footer {
 
 .footer-items small {
   font-size: 8px;
+}
+
+/* styles for the inpit field */
+
+ .sendmsg {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  color: white;
+  /* min-height: 50px; */
+  width: 100%;
+  max-width: 450px;
+  transition: all 0.5s ease;
+}
+
+.sendmsg .text-area {
+  flex: 1;
+  margin-bottom: -4px;
+  transition: all 5s ease;
+}
+
+#chatInput {
+  width: 100%;
+  resize: none;
+  padding: 5px 15px;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  font-size: 16px;
+  overflow-wrap: break-word;
+  height: 40px;
+  scrollbar-width: none;
+  background-color: rgb(74, 73, 73);
+  overflow-y: scroll;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  color: white;
+  line-height: 25px;
+  font-size: 20px;
+}
+
+
+.sendmsg .add-container .add {
+  font-size: 25px;
+}
+
+.sendmsg .sendBtn {
+  display: none;
+}
+
+.sendmsg .showSendBtn {
+  display: flex;
+  background-color: green;
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.hideMedia {
+  display: none;
 }

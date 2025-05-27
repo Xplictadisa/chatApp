@@ -25,6 +25,34 @@ export const contactList = [
     name: 'Esther',
     image: '../media/image/cat3.jpg',
     lastMsg: 'Holla!'
+  }, 
+
+  {
+    id: '2024',
+    name: 'Mike',
+    image: '../media/image/cat.jpg',
+    lastMsg: 'see you soon'
+  },
+
+  {
+    id: '2025',
+    name: 'John',
+    image: '../media/image/penguin-svgrepo-com.svg',
+    lastMsg: 'You nailed it brother' 
+  },
+
+  {
+    id: '2026',
+    name: 'Chris',
+    image: '../media/image/cat2.jpg',
+    lastMsg: 'Yo!'
+  },
+
+  {
+    id: '2027',
+    name: 'Mom',
+    image: '../media/image/cat3.jpg',
+    lastMsg: 'Thank you son.'
   }
 ];
 
@@ -34,11 +62,27 @@ export const callLogs = [
     image: '../media/image/penguin-svgrepo-com.svg'
   },
   {
-    name: 'John',
+    name: 'Mom',
     image: '../media/image/penguin-svgrepo-com.svg'
   },
   {
     name: 'Sam',
+    image: '../media/image/penguin-svgrepo-com.svg'
+  },
+  {
+    name: 'Mariam',
+    image: '../media/image/penguin-svgrepo-com.svg'
+  },
+  {
+    name: 'Dr Oseni',
+    image: '../media/image/penguin-svgrepo-com.svg'
+  },
+  {
+    name: 'Chris',
+    image: '../media/image/penguin-svgrepo-com.svg'
+  },
+  {
+    name: 'Dave',
     image: '../media/image/penguin-svgrepo-com.svg'
   },
   {

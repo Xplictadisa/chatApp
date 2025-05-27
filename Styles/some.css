@@ -137,7 +137,6 @@ body {
 
 /* styles for the input section */
 .sendmsg-container {
-  background-color: rgb(54, 54, 54);
   display: flex;
   justify-content: center;
 }
@@ -173,7 +172,7 @@ body {
   overflow-wrap: break-word;
   height: var(--inputHeight);
   scrollbar-width: none;
-  background-color: white;
+  background-color: rgb(42, 41, 41);
   overflow-y: scroll;
   scrollbar-width: none;
   scroll-behavior: smooth;
