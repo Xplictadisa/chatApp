@@ -11,6 +11,10 @@
   padding-bottom: 1000px;
 }
 
+.statusUpdateComponentContainer::-webkit-scrollbar {
+  display: none;
+}
+
 .statusUpdateComponentContainer 
 .note {
   font-size: 30px;

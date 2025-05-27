@@ -11,6 +11,10 @@
   padding-bottom: 10px;
 }
 
+.settingComponentContainer::-webkit-scrollbar {
+  display: none;
+}
+
 .settingComponentContainer .icon {
   width: 28px;
   height: 28px;
