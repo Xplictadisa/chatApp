@@ -11,9 +11,9 @@
   padding-bottom: 1000px;
 }
 
-.statusUpdateComponentContainer::-webkit-scrollbar {
+/* .statusUpdateComponentContainer::-webkit-scrollbar {
   display: none;
-}
+} */
 
 .statusUpdateComponentContainer 
 .note {
