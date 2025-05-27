@@ -112,6 +112,7 @@ footer {
   bottom: 0;
   width: var(--viewportWidth);
   padding: 0 10px;
+  z-index: 120;
 }
 
 .footer-container {

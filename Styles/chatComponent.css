@@ -236,6 +236,11 @@ USER OPEN CHAT WITH A FRIEND */
   border-radius: 50%;
 }
 
+.leftSidechatMessageHeader 
+.profile-details p {
+  font-size: 22px;
+}
+
 .rightSidechatMessageHeader {
   display: flex;
   align-items: center;
