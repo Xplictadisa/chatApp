@@ -20,6 +20,7 @@ body {
   height: var(--viewportHeight);
   overflow: hidden;
   scrollbar-width: none;
+  scrollbar-width: 0;
   /* border: 2px solid goldenrod; */
 }
 
