@@ -15,6 +15,7 @@
   /* border: 1px solid red; */
   display: flex;
   align-items: center;
+  font-size: 25px;
 }
 
 .communities-title {
@@ -29,31 +30,31 @@
 }
 
 .communities-imageCont img {
-  width: 110px;
-  height: 110px;
+  width: 150px;
+  height: 150px;
 }
 
 .communitiesComponentContainer 
 .stay-connected {
   color: white;
-  font-size: 20px;
+  font-size: 22px;
   margin-top: 10px;
 }
 
 .com-note {
-  font-size: 15px;
+  font-size: 20px;
   color: rgb(255, 255, 255, 0.5);
 }
 
 .exam-com {
-  font-size: 16px;
+  font-size: 18px;
   color: rgb(61, 171, 61);
   text-align: center;
   margin-top: 10px;
 }
 
 .buttonCom {
-  height: 35px;
+  height: 45px;
   background-color: rgb(76, 185, 76);
   color: black;
   font-size: 20px;

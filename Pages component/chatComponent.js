@@ -51,7 +51,7 @@ export function chatComponent() {
     searchContHTML.style.position = 'fixed'
     searchContHTML.style.top = 0;
     const leftPos = searchContHTML.getBoundingClientRect().left
-    searchContHTML.style.left = leftPos
+    searchContHTML.style.left = leftPos - 10
     searchContHTML.style.padding = '0 10px'
     sendIcon.style.display = 'block'
     backIcon.style.display = 'block'

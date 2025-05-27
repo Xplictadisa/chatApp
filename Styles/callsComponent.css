@@ -21,6 +21,7 @@
   align-items: center;
   flex-shrink: 0;
   z-index: 100;
+  font-size: 25px;
   /* border: 1px solid black; */
 }
 
@@ -31,7 +32,7 @@
 
 .callsInputContainer {
   width: 100%;
-  height: 30px;
+  height: 45px;
   transform: scaleY(1);
   transform-origin: top;
   max-width: 450px;
@@ -69,7 +70,7 @@
   height: 100%;
   min-height: 0px;
   width: 100%;
-  border-radius: 5px;
+  border-radius: 10px;
   border: none;
   padding: 10px 35px;
   z-index: 50;
@@ -98,6 +99,7 @@ input:focus {
   height: 75px;
   overflow: hidden;
   margin-top: 25px;
+
 }
 
 .add-favorite-container {
@@ -110,12 +112,12 @@ input:focus {
 
 
 .add-favorite-container > p {
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .favorites-title {
   margin: 0;
-  font-size: 22px;
+  font-size: 25px;
 }
 
 .add-favorite-container
@@ -131,15 +133,15 @@ input:focus {
 
 /* Recent section */
 .recent-container > p {
-  font-size: 22px;
+  font-size: 25px;
 }
 
 /* .recent-calls-container {
 } */
 
 .calls-list > img {
-  width: 35px;
-  height: 35px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   /* border: 1px solid black; */
 }
@@ -165,10 +167,17 @@ input:focus {
   white-space: nowrap;
   text-overflow: ellipsis;
   margin: 0;
+  font-size: 25px;
+}
+
+.calls-list .caller > span {
+  opacity: 0.5;
 }
 
 .calls-list .time {
   display: flex;
   align-items: center;
   gap: 5px;
+  font-size: 22px;
+  opacity: 0.5;
 }
