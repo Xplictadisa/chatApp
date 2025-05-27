@@ -48,8 +48,8 @@ header .head-container {
 }
 
 .icon {
-  width: 25px;
-  height: 25px;
+  width: 35px;
+  height: 35px;
 }
 
 .icon.ellipsis {
@@ -57,8 +57,9 @@ header .head-container {
   border: none;
   border-radius: 50%;
   background-color: gray;
-  width: 22px;
-  height: 22px;
+  /* width: 22px;
+  height: 22px; */
+
 }
 
 
@@ -67,8 +68,8 @@ header .head-container {
   background-color: green;
   border-radius: 50%;
   border: none;
-  width: 22px;
-  height: 22px;
+  /* width: 22px;
+  height: 22px; */
   margin-left: 10px;
 }
 
