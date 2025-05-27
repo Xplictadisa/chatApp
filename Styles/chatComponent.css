@@ -43,7 +43,6 @@ main .search-container {
   top: 40px;
   z-index: 100;
   transition: top 0.2s ease, transform 0.3ms ease;
-  border: 1px solid green;
 }
 
 .search-container .input {
