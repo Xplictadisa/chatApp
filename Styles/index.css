@@ -12,13 +12,23 @@
  --inputOpacity: 1
 }
 
+html, body {
+  height: 100%;
+  overflow: hidden;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   background-color: rgb(28, 28, 28);
   color: white;
   font-family: "Roboto", sans-serif;
   padding: 0 10px;
   height: var(--viewportHeight);
-  overflow: hidden;
   scrollbar-width: none;
   scrollbar-width: 0;
   /* border: 2px solid goldenrod; */
