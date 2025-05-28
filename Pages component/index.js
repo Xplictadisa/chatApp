@@ -33,7 +33,7 @@ footerContainer.addEventListener('click', (e) => {
     case 'settings': settingsComponent()
       break;
   
-    default: console.log('')
+    default: console.log('type is not calls, chat, etc')
       break;
   }
 })

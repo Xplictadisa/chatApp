@@ -192,6 +192,7 @@ input:focus {
 /* THIS STYLE IS FOR FOR THE CHAT MESSAGES  */
 .chat-message-container {
   padding: 10px;
+  /* padding-top: 1000px; */
   width: 100%;
   min-height: 100px;
   height: 100%;
@@ -205,18 +206,21 @@ input:focus {
   z-index: 110;
   background-color: rgb(28, 28, 28);
   transition: transform 0.3s ease;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
 }
 
 .chat-message-container::-webkit-scrollbar {
   display: none;
 }
 
-.chat-message {
-  font-size: 25px;
-  text-align: center;
-  margin-top: 50%;
-  padding-bottom: 1000px
-}
+/* .chat-message {
+  font-size: 15px;
+  display: flex;
+  flex-direction: column-reverse;
+} */
 
 /* THIS STYLES EACH CONTACT DISPLAY PICTURE, NAME,  ON HEADER WHEN
 USER OPEN CHAT WITH A FRIEND */
