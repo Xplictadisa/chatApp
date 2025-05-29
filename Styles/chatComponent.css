@@ -236,7 +236,7 @@ input:focus {
 .chat-message-container
 .textMsg {
   font-size: 20px;
-  word-break: break-all;
+  word-break: normal;
 }
 
 .msgTime {
