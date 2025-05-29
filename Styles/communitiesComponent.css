@@ -10,6 +10,11 @@
   /* border: 2px solid red; */
   padding-bottom: 1000px;
 }
+
+.communitiesComponentContainer::-webkit-scrollbar {
+  display: none;
+}
+
 .communities-title-container {
   height: 40px;
   /* border: 1px solid red; */

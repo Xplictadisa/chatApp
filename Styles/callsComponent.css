@@ -11,6 +11,10 @@
   padding-bottom: 1000px;
 }
 
+.callsComponentContainer::-webkit-scrollbar {
+  display: none;
+}
+
 .calls-title-container {
   position: sticky;
   top: 0;
