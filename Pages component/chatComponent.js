@@ -1,5 +1,7 @@
 import { contactList} from "../Data/data.js"
 import { scrollAnim, updateHeader, restoreHeader, renderPageFooter} from "../utility/shared.js";
+import { getCurrentTime, savecontactListToStorage } from "../utility/shared.js";
+
 
 const header = document.querySelector('header');
 const main = document.querySelector('main');
@@ -117,7 +119,9 @@ function renderActiveContact(contactListCont) {
         </div>
         <div class="name-container">
           <p class="contact-name" >${contact.name}</p>
-          <p class="lastMsg">${contact.lastMsg}</P>
+          <p class="lastMsg" data-lastmsg-id="${contact.id}">
+            ${contact.messages[0] ?? ''}
+          </P>
         </div>
     </div>`
   )
@@ -143,6 +147,7 @@ function openChatMessage(chatMessagesContainer) {
       /**update input field height when user type */
       updateInputFieldHeigt(chatInput, sendChatBtn, mediaHtml)
 
+
       const chatContainer = document.querySelector('.chat-container')
       
       /**COMPARE EACH CONTACT WITH THE CONTACTLIST ARRAY TO GET SOME DETAILS FROM THE CONTACTLIST */
@@ -152,11 +157,23 @@ function openChatMessage(chatMessagesContainer) {
         if (contactId === contact.id) {
          const inputElem = document.getElementById('chatInput');
 
-         /**this function update the message array of each contact and unshift the value from the inputElement to it */
-          sendMessage(inputElem, contact, chatMessagesContainer)
-          chatMessagesContainer.innerHTML = contact.messages.join('')
+         /**this function update the message array of each contact and unshift the value from the inputElement to it and send msg when 'Enter' key is pressed*/
+          sendMessage(inputElem, contact, chatMessagesContainer); 
 
-          chatMessagesContainer.style.transform = 'translateX(-100%)';
+        /** send msg when the send chat button is clicked */
+        sendChatBtn.addEventListener('click', () => {
+          if (chatInput.value.trim() !== '') {
+            const  text = (chatInput.value.trim())
+            contact.messages.unshift(text)
+            chatMessagesContainer.innerHTML = conversation(contact)
+            chatInput.value = ''
+            savecontactListToStorage(contactList)
+          }
+        })
+
+        chatMessagesContainer.innerHTML = conversation(contact) /** this code make sure that the chatMessages container only display messages unique to each contact */
+
+        chatMessagesContainer.style.transform = 'translateX(-100%)';
 
           left.innerHTML = (`
             <div class="leftSidechatMessageHeader">
@@ -179,12 +196,26 @@ function openChatMessage(chatMessagesContainer) {
           chatContainer.style.overflow = 'hidden'
 
           /*THIS CLOSE THE CHATMESSAGE CONTAINER */
-          const backBtn = document.getElementById(`btn${index}`)
+          const backBtn = document.getElementById(`btn${index}`);
           backBtn.addEventListener('click', () => {
+            const allLastMsg = document.querySelectorAll('.lastMsg')
+            const allLastMsgArray = [...allLastMsg]
+            allLastMsgArray.forEach((lastMsg) => {
+              const {lastmsgId} = lastMsg.dataset
+              contactList.forEach((contact) => {
+                contact.id === lastmsgId 
+                 ? lastMsg.textContent = contact.messages[0]
+                 : ''
+              })
+            })
+
             chatMessagesContainer.style.transform = 'translateX(100%)'
             updateChatPageHeader()
             footerContainer.innerHTML = renderPageFooter()
-            chatContainer.style.overflowY = 'scroll'
+            chatContainer.style.overflowY = 'scroll';
+
+            // const allMsgTime = document.querySelectorAll('.msgTime')
+            // allMsgTime.forEach((time) => time.textContent = '')
           })
         }
         
@@ -231,10 +262,19 @@ function showMessageInput(id) {
 function sendMessage(inputElem, contact, chatMessagesContainer) {
    inputElem.addEventListener('keydown', (e) => {
     if (inputElem.value.trim() !== '' && e.key === 'Enter') {
-      const  message = (inputElem.value.trim())
-      contact.messages.unshift(`<p>${message}</p>`)
-      // allMessages.unshift({id: contact.id, message})
-      chatMessagesContainer.innerHTML = contact.messages.join('')
+      const  text = (chatInput.value.trim())
+      contact.messages.unshift(text)
+      const conversation = contact.messages.map((message) => {
+        return(`
+          <div class="textMsg-container">
+            <p class="textMsg sender">${message}</p>
+            <span class="msgTime">${getCurrentTime()}</span>
+          </div>`
+        )
+      })
+      chatMessagesContainer.innerHTML = conversation.join('')
+      chatInput.value = ''
+      savecontactListToStorage(contactList)
     }
   })
 }
@@ -243,7 +283,7 @@ function sendMessage(inputElem, contact, chatMessagesContainer) {
 /**THIS FUNCTION ADJUST THE INPUT ELEM AND MAIN ELEM HEIGHT ON INPUT  */
 function updateInputFieldHeigt(chatInput, sendChatBtn, mediaHtml) {
   chatInput.addEventListener('input', () => {
-    const {height} = footer.getBoundingClientRect();
+    const {height} = chatInput.getBoundingClientRect();
 
     if (chatInput.value !== '') {
       sendChatBtn.classList.add('showSendBtn');
@@ -254,8 +294,22 @@ function updateInputFieldHeigt(chatInput, sendChatBtn, mediaHtml) {
     }
 
     chatInput.style.height = '40px';
+    // footer.style.height ='70px'
     chatInput.style.height = `${Math.min(chatInput.scrollHeight, 80)}px`
 
-      document.documentElement.style.setProperty('--footerHeight', `${height}px`);
+      document.documentElement.style.setProperty('--footerHeight', `${height + 30}px`);
   });
+}
+
+// function that renders each contact conversation
+function conversation(contact) {
+  const convers = contact.messages.map((message) => {
+    return(`
+      <div class="textMsg-container">
+        <p class="textMsg sender">${message}</p>
+        <span class="msgTime">${getCurrentTime()}</span>
+      </div>`
+    )
+  })
+  return convers.join('')
 }

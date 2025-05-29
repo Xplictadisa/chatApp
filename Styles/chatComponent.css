@@ -181,7 +181,11 @@ input:focus {
 
 .contact .lastMsg {
   font-size: 20px;
-  color: rgb(150, 150, 150)
+  color: rgb(150, 150, 150);
+  max-width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .img-container img {
@@ -206,7 +210,6 @@ input:focus {
   z-index: 110;
   background-color: rgb(28, 28, 28);
   transition: transform 0.3s ease;
-  border: 1px solid red;
   display: flex;
   flex-direction: column-reverse;
   align-items: flex-end;
@@ -216,11 +219,31 @@ input:focus {
   display: none;
 }
 
-/* .chat-message {
-  font-size: 15px;
+
+.chat-message-container
+.textMsg-container {
   display: flex;
-  flex-direction: column-reverse;
-} */
+  flex-direction: column;
+  gap: 2px;
+  max-width: 60%;
+  min-width: 120px;
+  background-color: rgb(4, 71, 4);
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin-top: 10px;
+}
+
+.chat-message-container
+.textMsg {
+  font-size: 20px;
+  word-break: break-all;
+}
+
+.msgTime {
+ font-size: 10px;
+ opacity: 0.5;
+ align-self: flex-end;
+}
 
 /* THIS STYLES EACH CONTACT DISPLAY PICTURE, NAME,  ON HEADER WHEN
 USER OPEN CHAT WITH A FRIEND */

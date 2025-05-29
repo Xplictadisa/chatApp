@@ -1,10 +1,10 @@
-export const contactList = [
+export const contactList = JSON.parse(localStorage.getItem('contactList')) ?? [
   {
     id: '2020',
     name: 'Dave',
     image: '../media/image/cat.jpg',
-    lastMsg: 'can you come to my office',
-    messages: ['<p>this is dave</p>']
+    lastMsg: '',
+    messages: []
   },
 
   {
@@ -12,7 +12,7 @@ export const contactList = [
     name: 'Frank',
     image: '../media/image/penguin-svgrepo-com.svg',
     lastMsg: 'I need to talk to you' ,
-    messages: ['<p>this is frank</p>']
+    messages: []
   },
 
   {
@@ -20,7 +20,7 @@ export const contactList = [
     name: 'Ajoke',
     image: '../media/image/cat2.jpg',
     lastMsg: 'Hello Buddy',
-    messages: ['<p>this is ajoke</p>']
+    messages: []
   },
 
   {
@@ -28,7 +28,7 @@ export const contactList = [
     name: 'Esther',
     image: '../media/image/cat3.jpg',
     lastMsg: 'Holla!',
-    messages: ['<p>this is Esther</p>']
+    messages: []
   }, 
 
   {
@@ -36,7 +36,7 @@ export const contactList = [
     name: 'Mike',
     image: '../media/image/cat.jpg',
     lastMsg: 'see you soon',
-    messages: ['<p>this is mike</p>']
+    messages: []
   },
 
   {
@@ -44,7 +44,7 @@ export const contactList = [
     name: 'John',
     image: '../media/image/penguin-svgrepo-com.svg',
     lastMsg: 'You nailed it brother',
-    messages: ['<p>this is john</p>']
+    messages: []
   },
 
   {
@@ -52,7 +52,7 @@ export const contactList = [
     name: 'Chris',
     image: '../media/image/cat2.jpg',
     lastMsg: 'Yo!',
-    messages: ['<p>this is chris</p>']
+    messages: []
   },
 
   {
@@ -60,7 +60,7 @@ export const contactList = [
     name: 'Mom',
     image: '../media/image/cat3.jpg',
     lastMsg: 'Thank you son.',
-    messages: ['<p>this is mom</p>']
+    messages: []
   }
 ];
 

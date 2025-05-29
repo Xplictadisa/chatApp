@@ -88,6 +88,17 @@ export function renderPageFooter() {
   return pageFooterHTML
 }
 
-function saveToStorage(data) {
-  
+export function savecontactListToStorage(data) {
+  localStorage.setItem('contactList', JSON.stringify(data))
+}
+
+export function getCurrentTime() {
+  const hour = new Date().getHours();
+  const formatedHour = hour > 12 ? hour - 12 : hour
+  const qualifier = hour > 12 ? 'PM' : 'AM'
+  const minute = new Date().getMinutes()
+  const formatedMinute = minute < 10 ?`0${minute}` : minute;
+  const currentTime = `${formatedHour}:${formatedMinute} ${qualifier}`
+
+  return currentTime
 }
