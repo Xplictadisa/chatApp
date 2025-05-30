@@ -16,15 +16,15 @@ const footer = document.querySelector('footer');
 /* FUNCTIONS */
 export function callsComponent() {
    
-      updateCallsPageHeader()
+      updateCallsPageHeader();
       main.innerHTML = callsHTML();
 
       /* EACH ELEMENT DECLARATION AFTER MOUNTED ON THE DOM */
-      const callsSearchInput = document.querySelector('.callsSearchInput')
-      const callsComponentContainer = document.querySelector('.callsComponentContainer')
-      const callsInputContainer = document.querySelector('.callsInputContainer')
-      const callsTitleContainer = document.querySelector('.calls-title-container')
-      const callLogCont = document.querySelector('.recent-calls-container') 
+      const callsSearchInput = document.querySelector('.callsSearchInput');
+      const callsComponentContainer = document.querySelector('.callsComponentContainer');
+      const callsInputContainer = document.querySelector('.callsInputContainer');
+      const callsTitleContainer = document.querySelector('.calls-title-container');
+      const callLogCont = document.querySelector('.recent-calls-container') ;
 
       /* RENDER CALLLOGS*/
       renderCallLog(callLogCont);
@@ -89,7 +89,7 @@ function renderCallLog(callLogCont) {
 function updateCallsPageHeader() {
   left.innerHTML = (`
       <ion-icon class="icon ellipsis" name="ellipsis-horizontal-sharp"></ion-icon>`
-      )
-  right.innerHTML = ''
-  middle.innerHTML = ''
+      );
+  right.innerHTML = '';
+  middle.innerHTML = '';
 }

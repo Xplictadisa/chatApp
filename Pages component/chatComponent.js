@@ -9,8 +9,8 @@ const main = document.querySelector('main');
 const footer = document.querySelector('footer');
 const footerContainer = document.querySelector('.footer-container');
 const right = document.querySelector('.right') ;
-const left = document.querySelector('.left')
-const middle = document.querySelector('.middle')
+const left = document.querySelector('.left');
+const middle = document.querySelector('.middle');
 
 
 /* RENDER CHAT COMPONENT ON CHAT BTN CLICKED*/
@@ -30,16 +30,16 @@ export function chatComponent() {
   const navContainer = document.querySelector('.nav-container');
   const chatTitleCont = document.querySelector('.chat-title-container');
   const contactListCont = document.querySelector('.contactList-container');
-  const sendIcon = document.querySelector('.icon.send')
-  const backIcon = document.querySelector('.icon.back')
-  const chatMessagesContainer = document.querySelector('.chat-message-container')
+  const sendIcon = document.querySelector('.icon.send');
+  const backIcon = document.querySelector('.icon.back');
+  const chatMessagesContainer = document.querySelector('.chat-message-container');
 
   /* FOR ANIMATING THE DIV= 'CHAT' AND INPUT ON SCROLL*/
-  scrollAnim(chatContHTML, chatContHTML, searchContHTML, chatTitleCont, () => {updateHeader('Chat')}, restoreHeader);
+  scrollAnim(chatContHTML, chatContHTML, searchContHTML, chatTitleCont, () => {updateHeader('Chat')}, restoreHeader)
  
 
   /* RENDER ALL ACTIVE CONTACT ON CHAT PAGE ON PAGE LOAD */
-  renderActiveContact(contactListCont);
+  renderActiveContact(contactListCont)
 
   /* ADD AN EVENT LISTENER TO EACH CONTACT RENDERED  */
    openChatMessage(chatMessagesContainer)
@@ -47,30 +47,30 @@ export function chatComponent() {
 
   searchInput.addEventListener('focus', () => {
     navContainer.style.display = 'none';
-    contactListCont.style.display = 'none'
-    chatTitleCont.style.display = 'none'
-    header.style.display = 'none'
-    searchContHTML.style.position = 'fixed'
+    contactListCont.style.display = 'none';
+    chatTitleCont.style.display = 'none';
+    header.style.display = 'none';
+    searchContHTML.style.position = 'fixed';
     searchContHTML.style.top = 0;
-    const leftPos = searchContHTML.getBoundingClientRect().left
-    searchContHTML.style.left = leftPos - 10
-    searchContHTML.style.padding = '0 10px'
-    sendIcon.style.display = 'block'
-    backIcon.style.display = 'block'
-    footer.style.display = 'none'
+    const leftPos = searchContHTML.getBoundingClientRect().left;
+    searchContHTML.style.left = leftPos - 10;
+    searchContHTML.style.padding = '0 10px';
+    sendIcon.style.display = 'block';
+    backIcon.style.display = 'block';
+    footer.style.display = 'none';
   });
 
   backIcon.addEventListener('click', () => {
-    navContainer.style.display = 'flex'
-    contactListCont.style.display = 'flex'
-    chatTitleCont.style.display = 'flex'
-    header.style.display = 'flex'
-    searchContHTML.style.position = 'sticky'
-    searchContHTML.style.top = '40px'
-    searchContHTML.style.padding = ''
-    sendIcon.style.display = 'none'
-    backIcon.style.display = 'none'
-    footer.style.display = 'flex'
+    navContainer.style.display = 'flex';
+    contactListCont.style.display = 'flex';
+    chatTitleCont.style.display = 'flex';
+    header.style.display = 'flex';
+    searchContHTML.style.position = 'sticky';
+    searchContHTML.style.top = '40px';
+    searchContHTML.style.padding = '';
+    sendIcon.style.display = 'none';
+    backIcon.style.display = 'none';
+    footer.style.display = 'flex';
   })
 }
 
@@ -130,8 +130,8 @@ contactListCont.innerHTML = contactHTML.join('');
 }
 
 function openChatMessage(chatMessagesContainer) {
-  const activeContacts = document.querySelectorAll('.contact')
-  const activeContactsArray = [...activeContacts]
+  const activeContacts = document.querySelectorAll('.contact');
+  const activeContactsArray = [...activeContacts];
  
   activeContactsArray.forEach((contact) => {
 
@@ -148,22 +148,22 @@ function openChatMessage(chatMessagesContainer) {
       updateInputFieldHeigt(chatInput, sendChatBtn, mediaHtml)
 
 
-      const chatContainer = document.querySelector('.chat-container')
+      const chatContainer = document.querySelector('.chat-container');
       
       /**COMPARE EACH CONTACT WITH THE CONTACTLIST ARRAY TO GET SOME DETAILS FROM THE CONTACTLIST */
-      const {contactId} = contact.dataset
+      const {contactId} = contact.dataset;
       
       contactList.forEach((contact, index) => {
         if (contactId === contact.id) {
          const inputElem = document.getElementById('chatInput');
 
          /**this function update the message array of each contact and unshift the value from the inputElement to it and send msg when 'Enter' key is pressed*/
-          sendMessage(inputElem, contact, chatMessagesContainer); 
+          sendMessage(inputElem, contact, chatMessagesContainer) 
 
         /** send msg when the send chat button is clicked */
         sendChatBtn.addEventListener('click', () => {
           if (chatInput.value.trim() !== '') {
-            const  text = (chatInput.value.trim())
+            const  text = chatInput.value.trim()
             contact.messages.unshift(text)
             chatMessagesContainer.innerHTML = conversation(contact)
             chatInput.value = ''
@@ -198,10 +198,10 @@ function openChatMessage(chatMessagesContainer) {
           /*THIS CLOSE THE CHATMESSAGE CONTAINER */
           const backBtn = document.getElementById(`btn${index}`);
           backBtn.addEventListener('click', () => {
-            const allLastMsg = document.querySelectorAll('.lastMsg')
-            const allLastMsgArray = [...allLastMsg]
+            const allLastMsg = document.querySelectorAll('.lastMsg');
+            const allLastMsgArray = [...allLastMsg];
             allLastMsgArray.forEach((lastMsg) => {
-              const {lastmsgId} = lastMsg.dataset
+              const {lastmsgId} = lastMsg.dataset;
               contactList.forEach((contact) => {
                 contact.id === lastmsgId 
                  ? lastMsg.textContent = contact.messages[0]
@@ -262,7 +262,7 @@ function showMessageInput(id) {
 function sendMessage(inputElem, contact, chatMessagesContainer) {
    inputElem.addEventListener('keydown', (e) => {
     if (inputElem.value.trim() !== '' && e.key === 'Enter') {
-      const  text = (chatInput.value.trim())
+      const  text = chatInput.value.trim();
       contact.messages.unshift(text)
       const conversation = contact.messages.map((message) => {
         return(`
@@ -293,11 +293,11 @@ function updateInputFieldHeigt(chatInput, sendChatBtn, mediaHtml) {
       mediaHtml.classList.remove('hideMedia')
     }
 
-    chatInput.style.height = '40px';
+    chatInput.style.height = '40px'
     // footer.style.height ='70px'
     chatInput.style.height = `${Math.min(chatInput.scrollHeight, 80)}px`
 
-      document.documentElement.style.setProperty('--footerHeight', `${height + 30}px`);
+    document.documentElement.style.setProperty('--footerHeight', `${height + 30}px`)
   });
 }
 

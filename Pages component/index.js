@@ -38,4 +38,5 @@ footerContainer.addEventListener('click', (e) => {
   }
 })
 
+// console.log(navigator.mediaDevices.getUserMedia())
 

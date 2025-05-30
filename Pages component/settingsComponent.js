@@ -21,9 +21,9 @@ export function settingsComponent() {
     /* EACH ELEMENT ASSIGNMENT WHEN SETTINGS HTML IS PRINTED ON THE PAGE */
     const settingCompContainer = document.querySelector('.settingComponentContainer');
     const settingsInputContainer = document.querySelector('.settingsInputContainer');
-    const settingsTitleCont = document.querySelector('.settings-title-container')
-    const settingSearchInput = document.querySelector('.settingsSearchInput')
-    const settingCancelSearch = document.querySelector('.settingCancelSearch')
+    const settingsTitleCont = document.querySelector('.settings-title-container');
+    const settingSearchInput = document.querySelector('.settingsSearchInput');
+    const settingCancelSearch = document.querySelector('.settingCancelSearch');
     
     /* MODIFY THE SETTING PAGE UI ON INPUT FOCUS */
     settingSearchInput.addEventListener('focus', () => {
